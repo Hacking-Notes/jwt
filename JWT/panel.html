@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/panel.css">
+</head>
+<body>
+  <div class="container">
+    <div class="section">
+      <h2>Cookie Selection</h2>
+      <div class="alert-info">
+        Note: Please remove 'HttpOnly' from the cookie attributes you're testing
+      </div>
+      <select id="cookie-list">
+        <option value="">Select a cookie...</option>
+      </select>
+      <div id="jwt-validation-alert" class="alert-warning" style="display: none;">
+        The selected cookie does not look like a valid JWT
+      </div>
+      <div class="button-group">
+        <button id="check-jwt">Check JWT</button>
+        <button id="refresh-cookies">Refresh Cookies</button>
+      </div>
+    </div>
+
+    <div class="section" id="new-jwt-section" style="display: none;">
+      <h2>Create New JWT</h2>
+      <div class="jwt-parts">
+        <div class="part">
+          <h3>Header</h3>
+          <textarea id="new-jwt-header" class="jwt-editor" spellcheck="false"></textarea>
+        </div>
+        <div class="part">
+          <h3>Payload</h3>
+          <textarea id="new-jwt-payload" class="jwt-editor" spellcheck="false"></textarea>
+        </div>
+        <div class="part">
+          <h3>Signature</h3>
+          <textarea id="new-jwt-signature" class="jwt-editor-signature" spellcheck="false"></textarea>
+        </div>
+      </div>
+      <div class="cookie-values">
+        <div class="cookie-value-container">
+          <h4>Generated Token</h4>
+          <div class="token-editor-container">
+            <textarea id="new-jwt-token" class="cookie-value-content" spellcheck="false"></textarea>
+            <button id="apply-new-jwt" class="apply-btn">Apply to Cookie</button>
+          </div>
+        </div>
+      </div>
+      <div id="new-jwt-status" class="token-status"></div>
+    </div>
+
+    <div class="section" id="jwt-info" style="display: none;">
+      <h2>JWT Information</h2>
+      <div class="tabs">
+        <button class="tab active" data-tab="original">Original Token</button>
+        <button class="tab" data-tab="modified">Modified Token</button>
+        <button class="tab" data-tab="custom">Custom Token</button>
+      </div>
+      
+      <div id="original-tab" class="tab-content active">
+        <div class="jwt-parts">
+          <div class="part">
+            <h3>Header</h3>
+            <pre id="original-header"></pre>
+          </div>
+          <div class="part">
+            <h3>Payload</h3>
+            <pre id="original-payload"></pre>
+          </div>
+          <div class="part">
+            <h3>Signature</h3>
+            <pre id="original-signature"></pre>
+          </div>
+        </div>
+        <div class="cookie-values">
+          <div class="cookie-value-container">
+            <h4>Original Cookie Value</h4>
+            <div id="original-cookie-value" class="cookie-value-content"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="modified-tab" class="tab-content">
+        <div class="jwt-parts">
+          <div class="part">
+            <h3>Header</h3>
+            <pre id="modified-header"></pre>
+          </div>
+          <div class="part">
+            <h3>Payload</h3>
+            <pre id="modified-payload"></pre>
+          </div>
+          <div class="part">
+            <h3>Signature</h3>
+            <pre id="modified-signature"></pre>
+          </div>
+        </div>
+        <div class="cookie-values">
+          <div class="cookie-value-container">
+            <h4>Modified Cookie Value</h4>
+            <div id="modified-cookie-value" class="cookie-value-content"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="custom-tab" class="tab-content">
+        <div class="jwt-parts">
+          <div class="part">
+            <h3>Header</h3>
+            <textarea id="custom-header" class="jwt-editor" spellcheck="false"></textarea>
+          </div>
+          <div class="part">
+            <h3>Payload</h3>
+            <textarea id="custom-payload" class="jwt-editor" spellcheck="false"></textarea>
+          </div>
+          <div class="part">
+            <h3>Signature</h3>
+            <textarea id="custom-signature" class="jwt-editor-signature" spellcheck="false"></textarea>
+          </div>
+        </div>
+        <div class="cookie-values">
+          <div class="cookie-value-container">
+            <h4>Generated Token</h4>
+            <div class="token-editor-container">
+              <textarea id="custom-token" class="cookie-value-content" spellcheck="false"></textarea>
+              <button id="apply-custom" class="apply-btn">Apply to Cookie</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="custom-token-status" class="token-status"></div>
+    </div>
+
+    <div class="section" id="attack-controls" style="display: none;">
+      <h3>Attack Controls</h3>
+      <div class="attack-buttons two-columns">
+        <button class="attack-btn" data-attack="alg_none">None Algorithm</button>
+        <button class="attack-btn" data-attack="alg_downgrade">Algorithm Downgrade</button>
+        <button class="attack-btn" data-attack="strip_signature">Strip Signature</button>
+        <button class="attack-btn" data-attack="arbitrary_signature">Arbitrary Signature</button>
+        <button class="attack-btn" data-attack="jwk_injection">JWK Injection</button>
+        <button class="attack-btn" data-attack="jku_injection">JKU Injection</button>
+        <button class="attack-btn" data-attack="kid_injection">KID Injection</button>
+        <button class="attack-btn" data-attack="hashcat">Generate Hashcat Command</button>
+      </div>
+      <div class="button-group">
+        <button id="reset-cookie" class="reset-btn">Reset Cookie</button>
+      </div>
+      <div id="attack-status" class="status"></div>
+    </div>
+  </div>
+  <script src="js/jwt-decode.min.js"></script>
+  <script src="js/panel.js"></script>
+</body>
+</html> 
