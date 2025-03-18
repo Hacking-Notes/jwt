@@ -2,6 +2,8 @@
 
 A powerful Chrome extension for security testing and manipulating JWT (JSON Web Tokens) in web applications. This tool enables security professionals and developers to test different attack vectors by modifying JWT tokens on the fly during security assessments and penetration testing.
 
+![image](https://github.com/user-attachments/assets/2c7d8638-20e7-4671-90a3-823d0a32fa9b)
+
 ## Features
 
 - Real-time JWT token manipulation and testing
